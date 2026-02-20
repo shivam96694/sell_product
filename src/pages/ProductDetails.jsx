@@ -1,40 +1,22 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import { getSingleProduct } from "../services/productService";
+import { getSingleProduct } from "../services/productService";
+import { useNavigate } from "react-router-dom";
 
 function ProductDetails() {
   const { id } = useParams();
+const navigate = useNavigate();
 
   const [product, setProduct] = useState(null);
 const [preview, setPreview] = useState(null);
   useEffect(() => {
-    // 🔴 REAL API (UNCOMMENT LATER)
-    /*
+  
     const fetchProduct = async () => {
       const res = await getSingleProduct(id);
       setProduct(res.data);
     };
     fetchProduct();
-    */
-
-    // 🟢 DUMMY DATA (REMOVE AFTER BACKEND)
-     setProduct({
-      id: 1,
-      title: "iPhone 13",
-      price: 45000,
-      location: "Bhopal",
-      description: "128GB, Blue, excellent condition",
-      images: [
-        "https://via.placeholder.com/400",
-        "https://via.placeholder.com/401",
-        "https://via.placeholder.com/402",
-      ],
-      video: "https://www.w3schools.com/html/mov_bbb.mp4",
-      seller: {
-        name: "Shivam Sharma",
-        phone: "9999999999",
-      },
-    });
+    
   }, [id]);
 
     useEffect(() => {
@@ -103,8 +85,20 @@ const [preview, setPreview] = useState(null);
           <p>{product.seller.phone}</p>
         </div>
 
-        <button className="chat-btn">Chat with Seller</button>
-
+<button
+  className="chat-btn"
+  onClick={() =>
+    navigate("/chat", {
+      state: {
+        productId: product.id,
+        sellerId: product.user_id, // seller id from backend
+        productTitle: product.title,
+      },
+    })
+  }
+>
+  Chat with Seller
+</button>
       </div>
     </div>
   );

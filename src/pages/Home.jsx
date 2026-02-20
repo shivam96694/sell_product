@@ -17,31 +17,12 @@ function Home() {
     }
   };*/
 
-  const fetchProducts = async () => {
+ const fetchProducts = async () => {
   try {
-    setLoading(true);
-
-    // 🔸 Temporary static data
-    const tempData = [
-      {
-        id: 1,
-        title: "iPhone 13",
-        price: 52000,
-        location: "Bhopal",
-        image: "https://via.placeholder.com/300",
-      },
-      {
-        id: 2,
-        title: "HP Laptop",
-        price: 35000,
-        location: "Indore",
-        image: "https://via.placeholder.com/300",
-      },
-    ];
-
-    setProducts(tempData);
-  } catch (error) {
-    console.log(error);
+    const res = await getAllProducts();
+    setProducts(res.data);
+  } catch (err) {
+    console.log(err);
   } finally {
     setLoading(false);
   }

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
 import { TextField, Button, Paper, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import api from "../services/api";
 function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -17,16 +18,34 @@ function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+  const token = localStorage.getItem("token");
+  if (token) navigate("/");
+}, []);
+ 
+const logout = () => {
+  localStorage.clear();
+  navigate("/login");
+};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const res = await loginUser(form);
 
-      login(res.data.user); // save in context
+      // ✅ SAVE TOKEN
+      localStorage.setItem("token", res.data.token);
+
+      // ✅ SAVE USER (optional)
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      alert("Login successful 🚀");
+
       navigate("/");
+
     } catch (err) {
-      alert("Invalid credentials");
+      alert(err.response?.data || "Invalid credentials");
     }
   };
 

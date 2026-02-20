@@ -415,7 +415,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: #fff;
+  background: #000;
   padding: 25px;
   border-radius: 12px;
 }
@@ -423,4 +423,105 @@ body {
 .add-product-form input,
 .add-product-form textarea {
   padding: 10px;
+}
+
+.btn-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btn-row button {
+  flex: 1;
+  margin: 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: crimson;
+}
+
+
+.chat-container {
+  max-width: 700px;
+  margin: auto;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  margin-top:20px;
+}
+
+.chat-header {
+  padding: 15px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.msg {
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 60%;
+}
+
+.buyer {
+  background: #7c3aed;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.seller {
+  background: #16da5a;
+  align-self: flex-start;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+}
+
+.chat-input button {
+  padding: 12px 20px;
+  border: none;
+  background: #7c3aed;
+  color: #fff;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #0f172a;
+  color: white;
+}
+
+.status {
+  font-size: 12px;
+  color: gray;
+}
+
+.chat-img {
+  width: 150px;
+  border-radius: 8px;
+  margin-top: 5px;
 }

@@ -5,7 +5,9 @@ import Register from "./pages/Register";
 import ProductDetails from "./pages/ProductDetails";
 import AddProduct from "./pages/AddProduct";
 import NotFound from "./pages/NotFound";
-
+import MyProducts from "./pages/MyProducts";
+import EditProduct from "./pages/EditProduct";
+import Chat from "./pages/Chat";
 function AppRoutes() {
   return (
     <div style={{ fontFamily: "Open Sans" }}>
@@ -16,6 +18,10 @@ function AppRoutes() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="*" element={<NotFound />} />
+        <Route element={<MyProducts />} path="/myproduct" />
+        <Route path="/edit/:id" element={<EditProduct />} />
+<Route path="/chat" element={<Chat />} />
+
       </Routes>
     </div>
   );

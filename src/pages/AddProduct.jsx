@@ -1,6 +1,8 @@
 import { useState } from "react";
 import api from "../services/api";
 import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
+
 function AddProduct() {
   const [form, setForm] = useState({
     title: "",
@@ -8,6 +10,8 @@ function AddProduct() {
     location: "",
     description: "",
   });
+
+  const navigate = useNavigate();
 
   const [images, setImages] = useState([]);
   const [video, setVideo] = useState(null);
@@ -27,6 +31,8 @@ const [videoPreview, setVideoPreview] = useState(null);
   setImagePreview(previewUrls);
 };
 
+
+
   const handleVideoChange = (e) => {
   const file = e.target.files[0];
   setVideo(file);
@@ -37,6 +43,7 @@ const [videoPreview, setVideoPreview] = useState(null);
 };
 
   const handleSubmit = async (e) => {
+   console.log(localStorage.getItem("token"));
     e.preventDefault();
 
     const formData = new FormData();
@@ -55,6 +62,7 @@ const [videoPreview, setVideoPreview] = useState(null);
     try {
       await api.post("/products", formData);
       alert("Product added ✅");
+       navigate("/");
     } catch (err) {
       console.log(err);
       alert("Error uploading product");
@@ -97,6 +105,7 @@ const uploadBoxStyle = {
       padding: 20,
     }}
   >
+
     <form
       onSubmit={handleSubmit}
       style={{
