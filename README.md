@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 # sell_product
-A full-featured RESTful API for a movie ticket booking platform. This Node.js project allows users to browse movies, view showtimes, select seats, and process bookings. It includes user authentication, payment integration, and admin management features.
+A full-featured RESTful API for a sell_product platform. This Node.js project allows users to browse product, view prodyct, select product, and process buying. It includes user authentication, payment integration, and admin management features.
 =======
 # React + Vite
 
